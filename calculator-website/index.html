@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doctor DevOps - Calculator</title>
+<style>
+  body{margin:0;font-family:'Segoe UI',sans-serif;background:#0f172a;color:white;display:flex;flex-direction:column;align-items:center;padding:20px}
+  h1{font-size:28px;margin:5px} h1 span{color:#4ade80}
+  p{color:#94a3b8;margin:0 0 20px;text-align:center}
+  .calc{background:#1e293b;padding:20px;border-radius:20px;width:100%;max-width:340px;box-shadow:0 10px 30px rgba(0,0,0,0.5)}
+  #display{width:100%;height:60px;background:#0f172a;border:0;border-radius:12px;color:white;font-size:28px;text-align:right;padding:0 15px;box-sizing:border-box;margin-bottom:15px}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  button{height:55px;border:0;border-radius:12px;font-size:18px;font-weight:bold;cursor:pointer;background:#334155;color:white}
+  button:hover{opacity:0.85}
+  .green{background:#16a34a} .orange{background:#f97316} .equal{background:#16a34a;grid-column:span 2}
+  .footer{margin-top:20px;color:#64748b;font-size:13px}
+</style>
+</head>
+<body>
+<h1>🩺 Doctor <span>DevOps</span></h1>
+<p>The Doctor who fixes calculations! <br> Try your calculator - with % operator</p>
+
+<div class="calc">
+  <input id="display" readonly placeholder="0">
+  <div class="grid">
+    <button class="orange" onclick="clearAll()">C</button>
+    <button onclick="add('(')">(</button>
+    <button onclick="add(')')">)</button>
+    <button class="orange" onclick="add('%')">%</button>
+    <button onclick="add('7')">7</button>
+    <button onclick="add('8')">8</button>
+    <button onclick="add('9')">9</button>
+    <button class="orange" onclick="add('/')">÷</button>
+    <button onclick="add('4')">4</button>
+    <button onclick="add('5')">5</button>
+    <button onclick="add('6')">6</button>
+    <button class="orange" onclick="add('*')">×</button>
+    <button onclick="add('1')">1</button>
+    <button onclick="add('2')">2</button>
+    <button onclick="add('3')">3</button>
+    <button class="orange" onclick="add('-')">-</button>
+    <button onclick="add('0')">0</button>
+    <button onclick="add('.')">.</button>
+    <button class="equal" onclick="calc()">=</button>
+    <button class="orange" onclick="add('+')">+</button>
+  </div>
+</div>
+
+<p class="footer">Built in doctor-devops repo | Python → HTML | Day 3 Project</p>
+
+<script>
+let d = document.getElementById('display');
+function add(v){ d.value += v; }
+function clearAll(){ d.value = ''; }
+function calc(){
+  try{ d.value = eval(d.value.replace(/%/g,'/100')); }
+  catch{ d.value = 'Error'; }
+}
+</script>
+</body>
+</html>
